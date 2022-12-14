@@ -1,0 +1,2 @@
+# CursoSQL
+QuerysBasicos
