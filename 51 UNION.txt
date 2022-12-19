@@ -9,6 +9,10 @@ SELECT 'D' AS 'COL D',  'E' AS 'COL E', 'F' AS 'COL F'
 
 --Tienen los mismos campos pero vienen de diferentes tablas
 --En el query final se mostraran como pagado y activo 
+--Nos sirve para juntar dos condiciones diferentes 
+--Es como una suma a la tabla
+
+
 SELECT 'Active' AS Source, InvoiceNumber, InvoiceDate, InvoiceTotal
 	FROM ActiveInvoices
 	WHERE InvoiceDate >= '01/01/2016'
