@@ -65,3 +65,12 @@ SELECT AccountDescription, COUNT(*) AS LineItemCount, SUM(InvoiceLineItemAmount)
 		GROUP BY AccountDescription
 		HAVING COUNT(*) > 1
 		ORDER BY LineItemCount DESC
+
+
+/*		6
+Escribir un query que solucione la siguiente pregunta
+Cual es la cantidad total por cada AccountNo 
+*/
+SELECT AccountNo, SUM(InvoiceLineItemAmount)
+	FROM AP.dbo.InvoiceLineItems
+	GROUP BY AccountNo WITH ROLLUP
