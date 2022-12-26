@@ -49,3 +49,19 @@ SELECT AccountDescription, COUNT(*) AS LineItemCount, SUM(InvoiceLineItemAmount)
 		GROUP BY AccountDescription
 		HAVING COUNT(*) > 1
 		ORDER BY LineItemCount DESC
+
+
+/*		5
+Modificar la solucion para el ejercicio filtrar los invoices de el 1 de febrero 2015
+*/
+
+SELECT AccountDescription, COUNT(*) AS LineItemCount, SUM(InvoiceLineItemAmount) AS LineItemSum
+	FROM AP.dbo.GLAccounts AS G
+	INNER JOIN AP.dbo.InvoiceLineItems AS II
+		ON G.AccountNo = II.AccountNo
+	INNER JOIN AP.dbo.Invoices AS I
+		ON I.InvoiceID = II.InvoiceID
+		WHERE I.InvoiceDate BETWEEN '2019-10-01'AND '2019-12-31'
+		GROUP BY AccountDescription
+		HAVING COUNT(*) > 1
+		ORDER BY LineItemCount DESC
