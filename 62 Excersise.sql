@@ -31,3 +31,21 @@ SELECT VendorName, COUNT(*) AS InvoiceCount, SUM(InvoiceTotal) AS InvoiceSum
 		ON I.VendorID = V.VendorID
 			GROUP BY VendorName
 			ORDER BY InvoiceCount DESC
+
+
+/*		4
+Escribir una consulta que regrese 3 columnas 
+AccountDescription:	Column on the GLAccounts table
+Match AccountNo en GLAccounts y en InvoiceLineItems
+LineItemCount:		Es el numero de entradas en la tabla de InvoiceLineItems 
+LineItemSum:		La suma de la col InvoiceLineItemAmount
+Todo agrupado por AccountNo
+*/
+
+SELECT AccountDescription, COUNT(*) AS LineItemCount, SUM(InvoiceLineItemAmount) AS LineItemSum
+	FROM AP.dbo.GLAccounts AS G
+	INNER JOIN AP.dbo.InvoiceLineItems AS II
+		ON G.AccountNo = II.AccountNo
+		GROUP BY AccountDescription
+		HAVING COUNT(*) > 1
+		ORDER BY LineItemCount DESC
