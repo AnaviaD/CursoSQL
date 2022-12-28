@@ -1,9 +1,11 @@
+/*
 AVG([All|DISTINCT] expression)
 SUM([All|DISTINCT] expression)
 MIN([All|DISTINCT] expression)
 MAX([All|DISTINCT] expression)
 COUNT([All|DISTINCT] expression)
 COUNT(*)
+*/
 
 --A summary query that count unpaid invoices
 --and calculates the total due
