@@ -25,3 +25,7 @@ SELECT InvoiceNumber, InvoiceDate, InvoiceTotal,
 	AVG(InvoiceTotal) OVER (ORDER BY InvoiceDate) AS MovingAvg
 		FROM AP.dbo.Invoices
 		ORDER BY InvoiceDate
+-- Como se comento anteriormente en esta consulta si se toman en cuenta las fechas y se va haciendo un seguimiento lineal
+-- La suma lineal SUM() se puede seguir con una calculadora 
+-- Cuando aparecen numeros en COUNT() iguales, la columna de SUM() y AVG() solo mostraran el valor final
+-- Pero la suma global no se pierde
