@@ -29,3 +29,18 @@ SELECT InvoiceNumber, InvoiceDate, InvoiceTotal,
 -- La suma lineal SUM() se puede seguir con una calculadora 
 -- Cuando aparecen numeros en COUNT() iguales, la columna de SUM() y AVG() solo mostraran el valor final
 -- Pero la suma global no se pierde
+
+
+/*		3
+Same query grouped by TermsID
+*/
+SELECT InvoiceNumber, TermsID, InvoiceDate, InvoiceTotal,
+	SUM(InvoiceTotal)
+		OVER (PARTITION BY TermsID ORDER BY InvoiceDate) AS CumTotal,
+	COUNT(InvoiceTotal)
+		OVER (PARTITION BY TermsID ORDER BY InvoiceDate) AS CountT,
+	AVG(InvoiceTotal)
+		OVER (PARTITION BY TermsID ORDER BY InvoiceDate) AS AvgInvoic
+			FROM AP.dbo.Invoices
+-- Las SUM(), COUNT() y AVG() son secuenciales siempre y cuando tenghan en mismo ID
+-- El Id es la llave para que esos 3 columnas sean incrementales
