@@ -42,12 +42,25 @@ The results of the first query are formatted to the problem description's specif
 The results of the second query are ascendingly ordered first by number of names corresponding to each profession (), and then alphabetically by profession (, and ).
 */
 
+-- Hice este codigo que regresa exactamente lo mismo pero la basura no lo acepto
 
-SELECT 
-    CASE 
-        WHEN A + B <= C THEN 'Not A Triangle'
-        WHEN A = B AND B = C AND A = C THEN 'Equilateral'
-        WHEN A = B OR B = C OR A = C THEN 'Isosceles'
-        ELSE 'Scalene'
-    END
-        FROM TRIANGLES;
+SELECT Name +'('+ LEFT(Occupation, 1) +')'
+    FROM OCCUPATIONS
+        ORDER BY Name;
+        
+SELECT 'There are a total of ' , Count(Name) , ' ' , LOWER(Occupation), 's.'
+    FROM Occupations
+        GROUP BY Occupation
+        ORDER BY Count(Occupation);
+
+
+-- El codigo que acepta esta basura es este 
+-- Copiado de los comentarios de las respuestas pero bueno :v
+
+SELECT CONCAT(NAME, "(", LEFT(OCCUPATION, 1), ")") 
+    FROM OCCUPATIONS ORDER BY NAME ASC;
+
+SELECT CONCAT("There are a total of ", COUNT(OCCUPATION), " ", LOWER(OCCUPATION), "s.") 
+    FROM OCCUPATIONS 
+        GROUP BY OCCUPATION 
+        ORDER BY COUNT(OCCUPATION) ASC, OCCUPATION ASC;
