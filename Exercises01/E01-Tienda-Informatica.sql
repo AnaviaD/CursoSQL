@@ -54,18 +54,37 @@ SELECT * FROM tiendaexerc.dbo.producto
 
 --Lista el nombre de los productos, el precio en euros y el precio en dólares estadounidenses (USD).
 
-SELECT nombre, precio * 19.14 + 'USD', precio * 20.54. FROM tiendaexerc.dbo.producto
+SELECT nombre, 
+	CONCAT((CONVERT(FLOAT, precio)* 19.14),'  USD'), 
+	CONCAT((CONVERT(FLOAT, precio)* 20.54),'  EUR') 
+		FROM tiendaexerc.dbo.producto
 
 --Lista el nombre de los productos, el precio en euros y el precio en dólares estadounidenses (USD). Utiliza los siguientes alias para las columnas: nombre de producto, euros, dólares.
 
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+SELECT nombre AS NombreDeProducto, 
+	CONCAT((CONVERT(FLOAT, precio)* 19.14),'  USD') AS Dolares, 
+	CONCAT((CONVERT(FLOAT, precio)* 20.54),'  EUR') AS Euros
+		FROM tiendaexerc.dbo.producto
 
 --Lista los nombres y los precios de todos los productos de la tabla producto, convirtiendo los nombres a mayúscula.
 
+SELECT UPPER(nombre) AS NombreDeProducto, 
+	CONCAT((CONVERT(FLOAT, precio)* 19.14),'  USD') AS Dolares, 
+	CONCAT((CONVERT(FLOAT, precio)* 20.54),'  EUR') AS Euros
+		FROM tiendaexerc.dbo.producto
+
 --Lista los nombres y los precios de todos los productos de la tabla producto, convirtiendo los nombres a minúscula.
+
+SELECT LOWER(nombre) AS NombreDeProducto, 
+	CONCAT((CONVERT(FLOAT, precio)* 19.14),'  USD') AS Dolares, 
+	CONCAT((CONVERT(FLOAT, precio)* 20.54),'  EUR') AS Euros
+		FROM tiendaexerc.dbo.producto
 
 --Lista el nombre de todos los fabricantes en una columna, y en otra columna obtenga en mayúsculas los dos primeros caracteres del nombre del fabricante.
 
+SELECT nombre, LEFT(nombre, 2), SUBSTRING(nombre, 1, 2) 
+	FROM tiendaexerc.dbo.fabricante
+  
 --Lista los nombres y los precios de todos los productos de la tabla producto, redondeando el valor del precio.
 
 --Lista los nombres y los precios de todos los productos de la tabla producto, truncando el valor del precio para mostrarlo sin ninguna cifra decimal.
