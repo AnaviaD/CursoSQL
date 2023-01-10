@@ -84,12 +84,21 @@ SELECT LOWER(nombre) AS NombreDeProducto,
 
 SELECT nombre, LEFT(nombre, 2), SUBSTRING(nombre, 1, 2) 
 	FROM tiendaexerc.dbo.fabricante
-  
+
 --Lista los nombres y los precios de todos los productos de la tabla producto, redondeando el valor del precio.
+
+SELECT nombre, ROUND(precio, 1) FROM tiendaexerc.dbo.producto
 
 --Lista los nombres y los precios de todos los productos de la tabla producto, truncando el valor del precio para mostrarlo sin ninguna cifra decimal.
 
+SELECT nombre, ROUND(precio, 1) FROM tiendaexerc.dbo.producto
+
 --Lista el identificador de los fabricantes que tienen productos en la tabla producto.
+
+SELECT P.id, F.id, P.id_fabricante
+	FROM tiendaexerc.dbo.producto AS P
+	INNER JOIN tiendaexerc.dbo.fabricante AS F
+	  ON P.id_fabricante = F.id
 
 --Lista el identificador de los fabricantes que tienen productos en la tabla producto, eliminando los identificadores que aparecen repetidos.
 
