@@ -102,9 +102,18 @@ SELECT P.id, F.id, P.id_fabricante
 
 --Lista el identificador de los fabricantes que tienen productos en la tabla producto, eliminando los identificadores que aparecen repetidos.
 
+SELECT DISTINCT(F.id)
+	FROM tiendaexerc.dbo.producto AS P
+	INNER JOIN tiendaexerc.dbo.fabricante AS F
+		ON P.id_fabricante = F.id 
+
 --Lista los nombres de los fabricantes ordenados de forma ascendente.
 
+SELECT nombre FROM tiendaexerc.dbo.fabricante ORDER BY nombre ASC
+
 --Lista los nombres de los fabricantes ordenados de forma descendente.
+
+SELECT nombre FROM tiendaexerc.dbo.fabricante ORDER BY nombre DESC
 
 --Lista los nombres de los productos ordenados en primer lugar por el nombre de forma ascendente y en segundo lugar por el precio de forma descendente.
 
