@@ -145,11 +145,19 @@ SELECT nombre FROM tiendaexerc.dbo.producto WHERE precio < 120
 
 --Lista el nombre de los productos que tienen un precio mayor o igual a 400€.
 
+SELECT nombre FROM tiendaexerc.dbo.producto WHERE precio > 400
+
 --Lista el nombre de los productos que no tienen un precio mayor o igual a 400€.
+
+SELECT nombre FROM tiendaexerc.dbo.producto WHERE precio < 400
 
 --Lista todos los productos que tengan un precio entre 80€ y 300€. Sin utilizar el operador BETWEEN.
 
+SELECT * FROM tiendaexerc.dbo.producto WHERE precio BETWEEN 80 AND 300
+
 --Lista todos los productos que tengan un precio entre 60€ y 200€. Utilizando el operador BETWEEN.
+
+SELECT * FROM tiendaexerc.dbo.producto WHERE precio BETWEEN 60 AND 200
 
 --Lista todos los productos que tengan un precio mayor que 200€ y que el identificador de fabricante sea igual a 6.
 
