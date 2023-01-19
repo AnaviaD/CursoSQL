@@ -121,11 +121,19 @@ SELECT nombre, precio FROM tiendaexerc.dbo.producto ORDER BY nombre, precio ASC
 
 --Devuelve una lista con las 5 primeras filas de la tabla fabricante.
 
+SELECT * FROM tiendaexerc.dbo.fabricante
+
 --Devuelve una lista con 2 filas a partir de la cuarta fila de la tabla fabricante. La cuarta fila también se debe incluir en la respuesta.
+
+
 
 --Lista el nombre y el precio del producto más barato. (Utilice solamente las cláusulas ORDER BY y LIMIT)
 
+SELECT nombre, precio FROM tiendaexerc.dbo.producto ORDER BY precio LIMIT 1 
+
 --Lista el nombre y el precio del producto más caro. (Utilice solamente las cláusulas ORDER BY y LIMIT)
+
+SELECT TOP 1 nombre, precio FROM tiendaexerc.dbo.producto ORDER BY precio DESC
 
 --Lista el nombre de todos los productos del fabricante cuyo identificador de fabricante es igual a 2.
 
