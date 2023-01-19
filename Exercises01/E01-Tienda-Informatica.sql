@@ -137,7 +137,11 @@ SELECT TOP 1 nombre, precio FROM tiendaexerc.dbo.producto ORDER BY precio DESC
 
 --Lista el nombre de todos los productos del fabricante cuyo identificador de fabricante es igual a 2.
 
+SELECT nombre FROM tiendaexerc.dbo.producto WHERE id_fabricante = 2
+
 --Lista el nombre de los productos que tienen un precio menor o igual a 120€.
+
+SELECT nombre FROM tiendaexerc.dbo.producto WHERE precio < 120
 
 --Lista el nombre de los productos que tienen un precio mayor o igual a 400€.
 
