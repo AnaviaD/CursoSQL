@@ -117,6 +117,8 @@ SELECT nombre FROM tiendaexerc.dbo.fabricante ORDER BY nombre DESC
 
 --Lista los nombres de los productos ordenados en primer lugar por el nombre de forma ascendente y en segundo lugar por el precio de forma descendente.
 
+SELECT nombre, precio FROM tiendaexerc.dbo.producto ORDER BY nombre, precio ASC
+
 --Devuelve una lista con las 5 primeras filas de la tabla fabricante.
 
 --Devuelve una lista con 2 filas a partir de la cuarta fila de la tabla fabricante. La cuarta fila también se debe incluir en la respuesta.
