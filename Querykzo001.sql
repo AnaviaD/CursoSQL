@@ -51,20 +51,21 @@
 				END
 
 
-				IF(@anoDeCondicional = 2023)
+				IF(@anoDeCondicional < 2022)
 				BEGIN
 					set @dias = (select dias = case 
-									when @años < 2 and @años > 0 then 6
-									when @años = 2 then 8
-									when @años = 3 then 10
-									when @años = 4 then 12
-									when @años in (5,6,7,8,9) then 14
-									when @años in (10,11,12,13,14)then 16
-									when @años in (15,16,17,18,19)then 18
-									when @años in (20,21,22,23,24) then 20
-									when @años in (25,26,27,28,29) then 22
-									when @años in (30, 31,32,33,34) then 24
-									when @años > 35 then 26
+									when @años < 2 and @años > 0 then 12
+									when @años = 2 then 14
+									when @años = 3 then 16
+									when @años = 4 then 18
+									when @años = 5 then 20
+									when @años in (6,7,8,9,10) then 22
+									when @años in (11,12,13,14,15)then 24
+									when @años in (16,17,18,19,20)then 26
+									when @años in (21,22,23,24,25) then 28
+									when @años in (26,27,28,29,30) then 30
+									when @años in (31,32,33,34,35) then 32
+									when @años > 35 then 32
 									else -1
 									END)
 
@@ -75,7 +76,7 @@
 
 				if(@dias != -1)
 				BEGIN
-					set @stringTest = ' ' + RTRIM(LTRIM(@emplId)) +'     '+ RTRIM(LTRIM(@nombre)) + CHAR(9) + CONVERT(varchar(100), @añoActual) + CHAR(9) + ' '  + CONVERT(varchar(100), @añoIngreso) + ' '  + CHAR(9) + CHAR(9) + 'Tiene : ' + CONVERT(varchar(100), @dias) + ' dias' + ' '  + CHAR(9) + CONVERT(varchar(100), @anoDeCondicional);
+					set @stringTest = ' ' + RTRIM(LTRIM(@emplId)) +'     '+ RTRIM(LTRIM(@nombre)) + CHAR(9) + CONVERT(varchar(100), @añoIngreso) + ' ' + CHAR(9) + 'Tiene : ' + CONVERT(varchar(100), @dias) + ' dias' + ' '  + CHAR(9) + CONVERT(varchar(100), @anoDeCondicional);
 					PRINT ('============================================================================================================================')
 					PRINT (@stringTest)
 					PRINT ('==============================================================')
