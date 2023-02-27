@@ -6,7 +6,7 @@
 
 
 		DECLARE @MyCursor CURSOR;
-		DECLARE @stringTest as varchar (100)
+		DECLARE @stringTest as varchar (200)
 		DECLARE @emplId as varchar (20)
 		DECLARE @años as int
 		DECLARE @nombre as varchar(150)
@@ -20,7 +20,7 @@
 
 
 
-		SET @MyCursor = CURSOR FOR (select i.empl_id, i.name, i.dateofhire from x_ftr.dbo.em i where status <> 'TER' AND month(dateofhire) BETWEEN month( CONVERT(datetime,'2023-01-01') ) AND month( CONVERT(datetime,'2023-02-24') ))
+		SET @MyCursor = CURSOR FOR (select i.empl_id, i.name, i.dateofhire from x_ftr.dbo.em i where status <> 'TER' AND month(dateofhire) BETWEEN month( CONVERT(datetime,'2023-01-01') ) AND month( CONVERT(datetime,'2023-02-27') ))
 			OPEN @MyCursor 
 		
 			FETCH NEXT FROM @MyCursor 
@@ -32,10 +32,12 @@
 
 				set @anoDeCondicional = YEAR(@añoIngreso)
 
+
 				IF(@anoDeCondicional = 2023)
 				BEGIN
 					set @dias =  -1
 				END
+
 
 				IF(@anoDeCondicional = 2022)
 				BEGIN
@@ -76,16 +78,16 @@
 
 				END
 
-				
 
 
 				if(@dias != -1)
 				BEGIN
-					set @stringTest = ' ' + RTRIM(LTRIM(@emplId)) +'     '+ RTRIM(LTRIM(@nombre)) + CHAR(9) + CONVERT(varchar(100), @añoIngreso) + ' ' + CHAR(9) + 'Tiene : ' + CONVERT(varchar(100), @dias) + ' dias' + ' '  + CHAR(9) + CONVERT(varchar(100), @anoDeCondicional);
+					set @stringTest = ' ' + RTRIM(LTRIM(@emplId)) +'     '+ RTRIM(LTRIM(@nombre)) + CHAR(9) + CONVERT(varchar(100), @añoIngreso) + ' ' + CHAR(9) + 'Tiene : ' + CONVERT(varchar(100), @dias) + ' dias' + ' '  + CHAR(9) + CONVERT(varchar(100), @años) + ' años trabajando';
 					PRINT ('============================================================================================================================')
 					PRINT (@stringTest)
 					PRINT ('==============================================================')
 
+					update [x_FTR].[dbo].[trfVacacionesPeriodo] SET diasPeriodo = @dias, diasPendientes = @dias WHERE empl_id = @emplId AND periodo = @añoActual
 					--insert into [x_FTR].[dbo].[trfVacacionesPeriodo] VALUES (@emplId, @añoActual, @dias,@dias, GETDATE(), null)
 					--insert into [x_FTR].[dbo].[trfVacaciones] (empl_id, d_periodo, p_disfrutar, d_pendiente_p, f_sitema) values (@emplId, @dias, @añoActual,@dias, GETDATE())
 				END
