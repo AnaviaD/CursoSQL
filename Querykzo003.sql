@@ -1,3 +1,6 @@
+-- SP [Ftrail].[dbo].[Panel_Etas]
+
+
 select * from (
 		SELECT  t5.AF, 
 		 t1.clave, 

@@ -1,3 +1,7 @@
+-- SP [X_FTR].[dbo].[insert_registro_vacaciones]
+
+
+
 	DECLARE @Error INT, @ErrorDesc AS NVARCHAR(250), @rdoc INT, @xmlRoot NVARCHAR(100), @SP_Nombre AS NVARCHAR(50);
 	DECLARE @OidHisTransaccion AS UNIQUEIDENTIFIER, @FechaTransaccion AS DATETIME;
 	SET @OidHisTransaccion = NEWID();
